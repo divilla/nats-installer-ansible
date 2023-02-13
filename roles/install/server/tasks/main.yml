@@ -1,0 +1,6 @@
+---
+
+- name: Install NATS server x64
+  ansible.builtin.dnf:
+    name: "https://github.com/nats-io/nats-server/releases/download/{{ nats_server_version }}/nats-server-{{ nats_server_version }}-amd64.rpm"
+  when: ansible_facts.architecture == "x86_64"

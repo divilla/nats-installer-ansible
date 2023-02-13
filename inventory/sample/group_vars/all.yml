@@ -1,0 +1,10 @@
+---
+nats_server_version: v2.9.14
+nats_client_version: 0.0.35
+ansible_user: rocky
+systemd_dir: /etc/systemd/system
+cluster_name: nats-cluster
+cluster_port: "6222"
+master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+extra_server_args: " --advertise-address {{ master_ip }} --tls-san {{ master_ip }}"
+extra_agent_args: ""

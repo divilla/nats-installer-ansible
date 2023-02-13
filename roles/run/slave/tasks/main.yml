@@ -1,0 +1,5 @@
+---
+
+- name: Start slave server
+  command: "nats-server -cluster nats://localhost:{{ cluster_port }} -routes nats://{{ master_ip }}:{{ cluster_port }} --cluster_name {{ cluster_name }}"
+  changed_when: true

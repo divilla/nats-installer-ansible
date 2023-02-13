@@ -1,0 +1,6 @@
+*
+!.gitignore
+!sample
+!sample/*
+!sample/group_vars
+!sample/group_vars/*

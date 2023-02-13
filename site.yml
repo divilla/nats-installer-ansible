@@ -1,0 +1,41 @@
+---
+
+- hosts: localhost
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: install/client
+
+- hosts: cluster
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: install/client
+
+- hosts: server
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: install/server
+
+- hosts: master
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: run/master
+
+- hosts: slave
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: run/slave
+
+# - hosts: master
+#   become: yes
+#   roles:
+#     - role: k3s/master
+
+# - hosts: node
+#   become: yes
+#   roles:
+#     - role: k3s/node
