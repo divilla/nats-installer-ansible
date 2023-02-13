@@ -7,7 +7,7 @@
     - name: Update all packages
       ansible.builtin.dnf:
         name: "*"
-        state: present
+        state: latest
 
 - hosts: cluster
   gather_facts: false
@@ -16,7 +16,7 @@
     - name: Install nano
       ansible.builtin.dnf:
         name: nano
-        state: present
+        state: latest
 
 - hosts: cluster
   gather_facts: false

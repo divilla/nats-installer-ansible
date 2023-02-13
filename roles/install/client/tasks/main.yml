@@ -3,4 +3,5 @@
 - name: Install NATS client x64
   ansible.builtin.dnf:
     name: "https://github.com/nats-io/natscli/releases/download/v{{ nats_client_version }}/nats-{{ nats_client_version }}-amd64.rpm"
+  check_mode: false
   when: ansible_facts.architecture == "x86_64"

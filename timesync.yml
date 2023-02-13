@@ -1,19 +1,9 @@
 ---
 
+  GNU nano 5.6.1                                                                                      timesync.yml                                                                                                 
+---
 
-# - hosts: localhost
-#   gather_facts: false
-#   become: true
-#   tasks:
-#     - name: Copy rhel-system-roles
-#       ansible.builtin.copy:
-#         src: /usr/share/ansible/roles/rhel-system-roles.timesync
-#         dest: roles
-#         owner: rocky
-#         group: rocky
-#         mode: u+rw,g-wx,o-rwx
-
-- hosts: all
+- hosts: cluster
   gather_facts: false
   become: true
   vars:
@@ -24,3 +14,10 @@
         nts: yes
   roles:
     - role: "/usr/share/ansible/roles/linux-system-roles.timesync"
+
+- hosts: cluster
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Unconditionally reboot the machine with all defaults
+      ansible.builtin.reboot:

@@ -1,5 +1,14 @@
 ---
 
+- name: Quit master server
+  become: true
+  ansible.builtin.command: "nats-server --signal quit"
+
 - name: Start master server
-  command: "nats-server -cluster nats://localhost:{{ cluster_port }} --cluster_name {{ cluster_name }}"
-  changed_when: true
+  become: true
+  ansible.builtin.command: "nats-server --cluster nats://localhost:{{ cluster_port }} --cluster_name {{ cluster_name }}"
+  register: result
+
+- name: Print result
+  ansible.builtin.debug:
+    var: result
